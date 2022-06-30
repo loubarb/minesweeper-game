@@ -1,5 +1,5 @@
 /* -----------------------------------UI----------------------------- */
-import { TILE_STATUSES, createBoard, markTile } from "./minesweeper.js"
+import { TILE_STATUSES, createBoard, markTile, revealTile } from "./minesweeper.js"
 
 const BOARD_SIZE = 10
 const NUMBER_OF_MINES = 10
@@ -11,8 +11,9 @@ const minesLeft = document.querySelector('[data-mine-count]')
 board.forEach(row => {
   row.forEach(tile => {
     boardElement.append(tile.element)
+    // handle left-click tile
     tile.element.addEventListener('click', (e) => {
-      console.log(e.currentTarget)
+      revealTile(board, tile)
 
     })
     // handle right-clicking with contextmenu
